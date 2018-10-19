@@ -2,10 +2,15 @@ $(function() {
 
     var titles = $("#titles");
     titles.on("click","li",function(){
-       $(this).find("div").slideToggle();
+      var div = $(this).find("div");
+      div.slideToggle();
        var bookid = this.dataset.id;
         console.log(bookid);
-        $.ajax({url:"http://localhost:8282/books/"})
+        $.ajax({url:"http://localhost:8282/books/"+ bookid})
+            .done(function (data) {
+                console.log(data);
+                div.text("Autor: " + data.author + ", Wydawnictwo: " +  data.publisher + ", Rodzaj: " + data.type);
+            })
 
 
 
