@@ -2,10 +2,6 @@ $(function() {
 
     var form = $("#addBook");
 
-
-
-
-
     form.on("submit", function(event) {
 
         var title = $("#title").val();
@@ -32,10 +28,6 @@ $(function() {
         })
         event.preventDefault();
         console.log(JSON.stringify(dataToSend));
-
-    form.on("submit", function(event) {
-        event.preventDefault();
-
     });
     var titles = $("#titles");
     titles.on("click","li",function(){
@@ -52,9 +44,9 @@ $(function() {
     $.ajax({
         url: "http://localhost:8282/books/"})
         .done(function(result) {console.log(result);
-        $(result).each(function(index, element) {
+            $(result).each(function(index, element) {
 
-            titles.append($(`<li data-id="${this.id}">${this.title}<div style="display:none"></div></li>`));
-        })
+                titles.append($(`<li data-id="${this.id}">${this.title}<div style="display:none"></div></li>`));
+            })
         })
 });
