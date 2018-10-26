@@ -1,8 +1,41 @@
 $(function() {
 
     var form = $("#addBook");
+
+
+
+
+
+    form.on("submit", function(event) {
+
+        var title = $("#title").val();
+        var author = $("#author").val();
+        var publisher = $("#publisher").val();
+        var type = $("#type").val();
+        var isbn = $("#isbn").val();
+
+        var dataToSend = {
+            title: title,
+            author: author,
+            publisher: publisher,
+            type: type,
+            isbn: isbn
+        };
+
+        console.log(title);
+        $.ajax({
+            url: "http://localhost:8282/books/",
+            data: JSON.stringify(dataToSend),
+            type: "POST",
+            contentType: "application/json"
+        }).done(function(result) {
+        })
+        event.preventDefault();
+        console.log(JSON.stringify(dataToSend));
+
     form.on("submit", function(event) {
         event.preventDefault();
+
     });
     var titles = $("#titles");
     titles.on("click","li",function(){
