@@ -5,6 +5,7 @@ $(function() {
 
 
 
+
     form.on("submit", function(event) {
 
         var title = $("#title").val();
@@ -31,6 +32,10 @@ $(function() {
         })
         event.preventDefault();
         console.log(JSON.stringify(dataToSend));
+
+    form.on("submit", function(event) {
+        event.preventDefault();
+
     });
     var titles = $("#titles");
     titles.on("click","li",function(){
